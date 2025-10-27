@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Абылай ханның қара жолы</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <style>
+        /* ------------------------- */
+        /* Global Styles     */
+        /* ------------------------- */
+        
+        :root {
+            --color-primary: #0056b3; /* Логотипке жақын көк түс */
+            --color-dark: #222;
+            --color-light: #fff;
+            --color-text: #333;
+            --color-bg-light: #f9f9f9;
+            --header-height: 70px;
+        }
+
+        /* Тегіс айналдыру (smooth scroll) */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-light);
+            line-height: 1.6;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Барлық кескіндерді адаптивті ету */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Секциялар арасындағы шегініс */
+        section {
+            padding: 60px 0;
+        }
+
+        /* Секция тақырыптары */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* ------------------------- */
+        /* Header          */
+        /* ------------------------- */
+
+        .header {
+            background: var(--color-light);
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--header-height);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 50px; /* logo.jpg-ға сәйкес */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-links li a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Мобильді меню (Гамбургер) */
+        .menu-toggle {
+            display: none; /* Компьютерде жасыру */
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        #menu-checkbox {
+            display: none;
+        }
+        
+        /* ------------------------- */
+        /* Hero Section       */
+        /* ------------------------- */
+        
+        #hero {
+            background-color: #1a1a1a; /* 1.jpg суретінің фонына сәйкес */
+            color: var(--color-light);
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #f0f0f0;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+        
+        .hero-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        /* ------------------------- */
+        /* Expedition & Map Blocks */
+        /* ------------------------- */
+        
+        #expedition {
+            background-color: var(--color-bg-light);
+        }
+
+        /* Бұл стильдер #expedition және #map үшін ортақ */
+        .full-width-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+        
+        /* ------------------------- */
+        /* Monuments Slider      */
+        /* ------------------------- */
+        
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slider-item {
+            flex: 0 0 33.3333%; /* Бір уақытта 3 сурет */
+            padding: 10px;
+        }
+        
+        .slider-item img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4 / 3; /* Пропорцияны сақтау (400x300) */
+            object-fit: cover;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .slider-btn {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background-color: #004494;
+        }
+
+        /* ------------------------- */
+        /* Comic Block        */
+        /* ------------------------- */
+
+        #comic {
+            background-color: var(--color-bg-light);
+        }
+
+        .comic-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--color-light);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .comic-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comic-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .comic-info h3 {
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+        
+        .comic-info .subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .comic-info .description {
+            font-size: 1rem;
+            color: var(--color-text);
+            margin-bottom: 30px;
+        }
+        
+        .comic-info .btn {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            max-width: 200px;
+        }
+        
+        .comic-info .btn:hover {
+            background-color: #004494;
+        }
+        
+        /* ------------------------- */
+        /* Footer          */
+        /* ------------------------- */
+
+        .footer {
+            background-color: var(--color-dark);
+            color: #aaa;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ------------------------- */
+        /* Adaptability       */
+        /* ------------------------- */
+
+        @media (max-width: 992px) {
+            /* Hero (Планшет) */
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-image {
+                order: -1; /* Суретті жоғарыға */
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            /* Slider (Планшет) */
+            .slider-item {
+                flex: 0 0 50%; /* 2 сурет */
+            }
+            
+            /* Comic (Планшет) */
+            .comic-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .comic-cover img {
+                max-height: 400px;
+            }
+            .comic-info {
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Header (Мобильді) */
+            .nav-links {
+                display: none; /* Менюді жасыру */
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--color-light);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                gap: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+            }
+            
+            .nav-links li a {
+                display: block;
+                padding: 15px;
+                text-align: center;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .menu-toggle {
+                display: flex; /* Гамбургерді көрсету */
+            }
+
+            /* Гамбургерді басқару */
+            #menu-checkbox:checked ~ .nav-links {
+                display: flex; /* Менюді ашу */
+            }
+            
+            /* Анимация (крестик) */
+            #menu-checkbox:checked ~ .menu-toggle .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            #menu-checkbox:checked ~ .menu-toggle .bar:nth-child(2) {
+                opacity: 0;
+            }
+            #menu-checkbox:checked ~ .menu-toggle .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            /* Hero */
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            /* Slider (Мобильді) */
+            .slider-item {
+                flex: 0 0 100%; /* 1 сурет */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="img/icon.webp" alt="Абылай хан жолы логотипі">
+            </a>
+            
+            <input type="checkbox" id="menu-checkbox">
+            
+            <label for="menu-checkbox" class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </label>
+            
+            <nav class="navigation">
+                <ul class="nav-links">
+                    <li><a href="#hero">Абылай хан</a></li>
+                    <li><a href="#expedition">Экспедиция</a></li>
+                    <li><a href="#monuments">Ескерткіштер</a></li>
+                    <li><a href="#contact">Комикстар</a></li>
+                    <!-- <li><a href="#">Қазақ тілі</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>АБЫЛАЙ ХАН</h1>
+                        <p>
+                            Абылай хан (1711–1781) — қазақ халқының ұлы мемлекет қайраткері, әскери қолбасшы және дипломат. Оның шын аты — Әбілмансұр. Жоңғар шапқыншылығына қарсы күресте ерлігімен танылып, «Абылай» атанды. XVIII ғасырда қазақ елінің бірлігін сақтап, үш жүзді біріктіріп, хандық билікті нығайтты. Ресей және Қытаймен тең қатынас орнатып, елдің тәуелсіздігі мен ішкі бірлігін қорғауға күш салды. Ордасы Бурабайда орналасқан. Абылай хан дәуірі қазақ мемлекеттілігінің жаңғыру кезеңі болды.
+                        </p>
+                    </div>
+                    <div class="hero-image">
+                        <img src="img/abl.jpeg" alt="Абылай ханның портреті">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expedition">
+            <div class="container">
+                <h2 class="section-title">«Абылай ханнан абыз Төныкөкке дейін» халықаралық мәдени-рухани экспедициясы</h2>
+                <div class="expedition-content">
+                    <img src="img/image 1.png" alt="Абылай ханнан абыз Төныкөкке дейін экспедициясының картасы мен фотолары" class="full-width-image">
+                </div>
+            </div>
+        </section>
+        
+        <section id="map">
+            <div class="container">
+                <h2 class="section-title">«Абылай ханның қара жолы» тарихи-ғылыми экспедициялары</h2>
+                <div class="map-content">
+                    <img src="img/image 2.png" alt="Абылай ханның қара жолы экспедициясының маршрут картасы 2018-2023" class="full-width-image">
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments">
+            <div class="container">
+                <h2 class="section-title">Абылай ханның қара жолы бойындағы мәдени және тарихи ескерткіштер</h2>
+                
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <div class="slider-item">
+                            <img src="img/1.jpeg" alt="Ескерткіш 1">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/2.jpg" alt="Ескерткіш 2">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/3.png" alt="Ескерткіш 3">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/4.jfif" alt="Ескерткіш 4">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/5.webp" alt="Ескерткіш 5">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/6.jfif" alt="Ескерткіш 6">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/7.jpg" alt="Ескерткіш 7">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/8.jpg" alt="Ескерткіш 8">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button id="prevBtn" class="slider-btn" aria-label="Previous slide">&lt;</button>
+                    <button id="nextBtn" class="slider-btn" aria-label="Next slide">&gt;</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comic">
+            <div class="container">
+                 <h2 class="section-title">Комикстар</h2>
+                <div class="comic-content">
+                    <div class="comic-cover">
+                        <img src="img/comics.jpg" alt="Абылай хан комикс мұқабасы">
+                    </div>
+                    <div class="comic-info">
+                        <h3>«Қара жолдың ізімен»</h3>
+                        <p class="subtitle">Тарихи-танымдық комиксы</p>
+                        <p class="description">
+                            Сюжеті: Бүгінгі мектеп оқушысы уақыт машинасы арқылы XVIII ғасырға түсіп, Абылай хан ордасында болып, ханның елді біріктіру жолындағы шешімдеріне куә болады. 
+                        </p>
+                        <a href="img/Comics.pdf" class="btn">Комиксты оқу</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p>© Көкшетау, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // Слайдер логикасы
+            const wrapper = document.querySelector('.slider-wrapper');
+            if (wrapper) {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const slides = Array.from(wrapper.children);
+                
+                let currentIndex = 0;
+                let slidesPerView = getSlidesPerView();
+                
+                // Көрінетін слайдтар санын экран өлшеміне қарай анықтау
+                function getSlidesPerView() {
+                    if (window.innerWidth <= 768) return 1;
+                    if (window.innerWidth <= 992) return 2;
+                    return 3;
+                }
+
+                // Слайдердің енін есептеу және орнату
+                function setupSlider() {
+                    slidesPerView = getSlidesPerView();
+                    const slideWidth = 100 / slidesPerView;
+                    
+                    slides.forEach(slide => {
+                        slide.style.flex = `0 0 ${slideWidth}%`;
+                    });
+                    
+                    // Жаңа слайдтарды клондау (шексіз айналдыру үшін)
+                    const slidesToClone = slides.slice(0, slidesPerView);
+                    slidesToClone.forEach(slide => {
+                        wrapper.appendChild(slide.cloneNode(true));
+                    });
+                }
+                
+                function updateSliderPosition(animate = true) {
+                    const slideWidth = slides[0].clientWidth;
+                    const offset = -currentIndex * slideWidth;
+                    
+                    wrapper.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
+                    wrapper.style.transform = `translateX(${offset}px)`;
+                }
+
+                nextBtn.addEventListener('click', () => {
+                    currentIndex++;
+                    updateSliderPosition();
+                    
+                    // Шексіз айналдыру логикасы
+                    if (currentIndex === slides.length) {
+                        setTimeout(() => {
+                            currentIndex = 0;
+                            updateSliderPosition(false);
+                        }, 500); // Анимация уақытымен бірдей
+                    }
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex === 0) {
+                        // Артқа, соңғы "шынайы" слайдқа жылдам өту
+                        currentIndex = slides.length;
+                        updateSliderPosition(false);
+                    }
+                    
+                    // Кішкене кідірістен кейін анимацияны іске қосу
+                    setTimeout(() => {
+                        currentIndex--;
+                        updateSliderPosition();
+                    }, 10);
+                });
+
+                // Экран өлшемі өзгергенде слайдерді қайта реттеу
+                window.addEventListener('resize', () => {
+                    setupSlider();
+                    updateSliderPosition(false);
+                });
+
+                // Бастапқы орнату
+                setupSlider();
+                updateSliderPosition(false);
+            }
+
+            // Мобильді менюдегі сілтемені басқанда менюді жабу
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const menuCheckbox = document.getElementById('menu-checkbox');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (menuCheckbox.checked) {
+                        menuCheckbox.checked = false;
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
