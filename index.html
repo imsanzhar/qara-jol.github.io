@@ -12,7 +12,7 @@
         /* ------------------------- */
         
         :root {
-            --color-primary: #0056b3; /* Логотипке жақын көк түс */
+            --color-primary: #0056b3; 
             --color-dark: #222;
             --color-light: #fff;
             --color-text: #333;
@@ -20,7 +20,6 @@
             --header-height: 70px;
         }
 
-        /* Тегіс айналдыру (smooth scroll) */
         html {
             scroll-behavior: smooth;
             font-size: 16px;
@@ -38,26 +37,22 @@
             box-sizing: border-box;
         }
 
-        /* Контейнер */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Барлық кескіндерді адаптивті ету */
         img {
             max-width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Секциялар арасындағы шегініс */
         section {
             padding: 60px 0;
         }
 
-        /* Секция тақырыптары */
         .section-title {
             font-size: 2.5rem;
             color: var(--color-dark);
@@ -95,7 +90,7 @@
         }
 
         .logo img {
-            height: 50px; /* logo.jpg-ға сәйкес */
+            height: 50px; 
         }
 
         .nav-links {
@@ -118,9 +113,8 @@
             color: var(--color-primary);
         }
 
-        /* Мобильді меню (Гамбургер) */
         .menu-toggle {
-            display: none; /* Компьютерде жасыру */
+            display: none; 
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
@@ -143,7 +137,7 @@
         /* ------------------------- */
         
         #hero {
-            background-color: #1a1a1a; /* 1.jpg суретінің фонына сәйкес */
+            background-color: #1a1a1a; 
             color: var(--color-light);
             padding-top: 80px;
             padding-bottom: 80px;
@@ -185,7 +179,6 @@
             background-color: var(--color-bg-light);
         }
 
-        /* Бұл стильдер #expedition және #map үшін ортақ */
         .full-width-image {
             width: 100%;
             border-radius: 8px;
@@ -202,24 +195,49 @@
             overflow: hidden;
             max-width: 1100px;
             margin: 0 auto;
+            /* ТҮЗЕТУ: Биіктіктің өзгеруін анимациялау */
+            transition: height 0.5s ease-in-out;
         }
         
         .slider-wrapper {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            /* Элементтерді биіктігі бойынша созбау */
+            align-items: flex-start;
         }
         
         .slider-item {
-            flex: 0 0 33.3333%; /* Бір уақытта 3 сурет */
+            flex: 0 0 33.3333%; 
             padding: 10px;
         }
         
-        .slider-item img {
-            width: 100%;
+        /* .slider-item img { (төменде жаңартылды) */
+
+        .slider-card {
+            background-color: var(--color-light);
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            aspect-ratio: 4 / 3; /* Пропорцияны сақтау (400x300) */
+            overflow: hidden; 
+            /* height: 100%; (алып тасталды) */
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .slider-item img {
+            width: 100%;
+            aspect-ratio: 4 / 3; 
             object-fit: cover;
+            /* border-radius және box-shadow .slider-card-қа көшірілді */
+        }
+
+        .slider-caption {
+            padding: 15px;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            text-align: center;
+            line-height: 1.5;
+            margin: 0;
+            /* flex-grow: 1; (алып тасталды) */
         }
         
         .slider-controls {
@@ -335,13 +353,12 @@
         /* ------------------------- */
 
         @media (max-width: 992px) {
-            /* Hero (Планшет) */
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
             .hero-image {
-                order: -1; /* Суретті жоғарыға */
+                order: -1; 
                 max-width: 500px;
                 margin: 0 auto;
             }
@@ -349,12 +366,10 @@
                 font-size: 2.8rem;
             }
             
-            /* Slider (Планшет) */
             .slider-item {
                 flex: 0 0 50%; /* 2 сурет */
             }
             
-            /* Comic (Планшет) */
             .comic-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -368,9 +383,8 @@
         }
         
         @media (max-width: 768px) {
-            /* Header (Мобильді) */
             .nav-links {
-                display: none; /* Менюді жасыру */
+                display: none; 
                 position: absolute;
                 top: var(--header-height);
                 left: 0;
@@ -394,15 +408,13 @@
             }
             
             .menu-toggle {
-                display: flex; /* Гамбургерді көрсету */
+                display: flex; 
             }
 
-            /* Гамбургерді басқару */
             #menu-checkbox:checked ~ .nav-links {
-                display: flex; /* Менюді ашу */
+                display: flex; 
             }
             
-            /* Анимация (крестик) */
             #menu-checkbox:checked ~ .menu-toggle .bar:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
             }
@@ -413,12 +425,10 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
             
-            /* Hero */
             .hero-text h1 {
                 font-size: 2.2rem;
             }
             
-            /* Slider (Мобильді) */
             .slider-item {
                 flex: 0 0 100%; /* 1 сурет */
             }
@@ -441,15 +451,12 @@
                 <div class="bar"></div>
             </label>
             
-            <nav class="navigation">
-                <ul class="nav-links">
-                    <li><a href="#hero">Абылай хан</a></li>
-                    <li><a href="#expedition">Экспедиция</a></li>
-                    <li><a href="#monuments">Ескерткіштер</a></li>
-                    <li><a href="#contact">Комикстар</a></li>
-                    <!-- <li><a href="#">Қазақ тілі</a></li> -->
+            <ul class="nav-links">
+                <li><a href="#hero">Абылай хан</a></li>
+                <li><a href="#expedition">Экспедиция</a></li>
+                <li><a href="#monuments">Ескерткіштер</a></li>
+                <li><a href="#contact">Комикстар</a></li>
                 </ul>
-            </nav>
         </div>
     </header>
 
@@ -495,30 +502,79 @@
                 
                 <div class="slider-container">
                     <div class="slider-wrapper">
+                        
                         <div class="slider-item">
-                            <img src="img/1.jpeg" alt="Ескерткіш 1">
+                            <div class="slider-card">
+                                <img src="img/1.jpeg" alt="Ескерткіш 1">
+                                <div class="slider-caption">
+                                    <p><strong>Абылай хан алаңы (Бурабай):</strong> «Абылай ханнан абыз Тоныкөкке дейін» халықаралық экспедициясының салтанатты шығарып салу шарасы Бурабайдағы Абылай хан алаңында, «Хан тағының» алдында басталған. Бұл өңір Абылай ханның тарихымен тығыз байланысты, деректерде Абылай ханның Бурабайда ордасын тіккені белгілі.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/2.jpg" alt="Ескерткіш 2">
+                            <div class="slider-card">
+                                <img src="img/2.jpg" alt="Ескерткіш 2">
+                                <div class="slider-caption">
+                                    <p><strong>«Үш найза» монументі (Ерейментау):</strong> Бұл стелла Ерейментау қаласының солтүстігінде, «Шошақ төбе» биіктігінде, Астана – Павлодар трассасының бойында орналасқан. Ол Қанжығалы Бөгенбай батырдың 300 жылдық мерейтойының құрметіне орнатылған. Ескерткіш үш тұғыр, үш тірек, үш найза және үш қалқаннан тұрады, бұл үш жүздің бірлігін, жауға төтеп беруін және ел тұтастығының белгісін білдіреді.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/3.png" alt="Ескерткіш 3">
+                            <div class="slider-card">
+                                <img src="img/3.png" alt="Ескерткіш 3">
+                                <div class="slider-caption">
+                                    <p><strong>Күлтегін ескерткіші:</strong> Бұл көне түркі жазба ескерткіші, Екінші Түркі қағанатының қолбасшысы Күлтегінге (684-731) арналып 732 жылы орнатылған. Ескерткіш Моңғолиядағы Орхон өзені бойындағы Көше-Сайдам жазығында орналасқан. Тас ұстында (биіктігі 3,15 м) көне түркі бітіг жазуымен түркі халқының елдігі, мемлекеттілігі және Күлтегіннің ерлік жорықтары туралы жазылған. Ескерткіштің түпнұсқасы қазіргі кезде «Көше-цайдам» мұражайында сақталса, оның ғылыми көшірмесі 2001 жылы Астанадағы Л.Н. Гумилев атындағы Еуразия ұлттық университетіне қойылған.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/4.jfif" alt="Ескерткіш 4">
+                            <div class="slider-card">
+                                <img src="img/4.jfif" alt="Ескерткіш 4">
+                                <div class="slider-caption">
+                                    <p><strong>Жошы хан кесенесі:</strong> Бұл XIII ғасырдың алғашқы жартысына (кейбір ғалымдарша XV-XVI ғғ.) жататын сәулет ескерткіші Ұлытау тауының маңында, Қаракеңгір өзенінің жағасында орналасқан. Кесенеде Шыңғыс ханның үлкен ұлы, қазақ хандарының атасы Жошы хан және оның бәйбішесі Керей қызы Бектумыш жерленген. Ескерткішті 1946 жылы Әлкей Марғұлан бастаған экспедиция зерттеген және ол республикалық маңызы бар тарихи ескерткіш ретінде мемлекет қорғауына алынған.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/5.webp" alt="Ескерткіш 5">
+                            <div class="slider-card">
+                                <img src="img/6.jfif" alt="Ескерткіш 5">
+                                <div class="slider-caption">
+                                    <p><strong>Шыңғысхан мұражайы:</strong> Ұлан-Батыр қаласында орналасқан бұл мұражай соңғы цифрлық технологиялармен жабдықталған. 8 қабатты мәрмәр ғимаратта Моңғол ұлысының даму кезеңдері және Шыңғыс ханның моңғол мемлекеттілігі тарихындағы рөлі туралы жәдігерлер қойылған. Экспедиция мүшелері мұнда 1224 жылы жазылған моңғол тіліндегі ұстын секілді құнды жәдігерлермен танысқан.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/6.jfif" alt="Ескерткіш 6">
+                            <div class="slider-card">
+                                <img src="img/5.webp" alt="Ескерткіш 6">
+                                <div class="slider-caption">
+                                    <p><strong>«Ботай-Бурабай» ашық аспан астындағы этномузейі:</strong> Бұл музей Ботай мәдениетіне арналған. Ботай мәдениеті (бұдан 5-6 мың жыл бұрын) – жылқыны әлемде ең алғаш қолға үйреткен және көшпелі өркениеттің бастауы болған тарихи кезең. Қонысты 1980 жылы археолог Виктор Зайберт ашқан. Музей аумағы 15 гектар жерді алып жатыр және мұнда сол заманғы 100-ден астам тұрғын үй орындары табылған.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/7.jpg" alt="Ескерткіш 7">
+                            <div class="slider-card">
+                                <img src="img/7.jpg" alt="Ескерткіш 7">
+                                <div class="slider-caption">
+                                    <p><strong>Білге қаған ескерткіші:</strong> Бұл Екінші Шығыс Түркі қағанатының билеушісі, Күлтегіннің ағасы Білге қағанға (734 жылы қайтыс болған) арналған кешен. Ол Күлтегін кешені сияқты Орхон өзені бойында, Көше-цайдам мұражайы аумағында орналасқан. Ескерткіште Білге қағанның өз халқына арнаған өсиет сөздері, елді біріктіру және мемлекетті нығайту жолындағы күресі баяндалған.</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="slider-item">
-                            <img src="img/8.jpg" alt="Ескерткіш 8">
+                            <div class="slider-card">
+                                <img src="img/8.jpg" alt="Ескерткіш 8">
+                                <div class="slider-caption">
+                                    <p><strong>А.В. Анохин атындағы «Элмузейі»:</strong> Бұл Ресейдің Таулы Алтай Республикасындағы Горно-Алтай қаласында орналасқан мұражай. 1918 жылы құрылған бұл мұражайда Алтай өлкесінің ерте заманнан бүгінгі күнге дейінгі тарихи-мәдени ескерткіштері қойылған. Мұражайдың ең құнды жәдігерлерінің бірі – бұдан 2,5 мың жыл бұрынғы «Үкөк ханшайымының» (Ақ-қадын) мумиясы. Ол арнайы жабдықталған саркофагта сақтаулы.</p>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 
@@ -560,82 +616,128 @@
         document.addEventListener('DOMContentLoaded', function () {
             
             // Слайдер логикасы
+            const sliderContainer = document.querySelector('.slider-container'); // Контейнерді аламыз
             const wrapper = document.querySelector('.slider-wrapper');
+            
             if (wrapper) {
                 const prevBtn = document.getElementById('prevBtn');
                 const nextBtn = document.getElementById('nextBtn');
-                const slides = Array.from(wrapper.children);
+                const originalSlides = Array.from(wrapper.children); // Түпнұсқа 8 слайдты сақтаймыз
+                let allSlides = []; // Барлық слайдтарды (түпнұсқа + клон) сақтау үшін
                 
                 let currentIndex = 0;
                 let slidesPerView = getSlidesPerView();
                 
-                // Көрінетін слайдтар санын экран өлшеміне қарай анықтау
                 function getSlidesPerView() {
                     if (window.innerWidth <= 768) return 1;
                     if (window.innerWidth <= 992) return 2;
                     return 3;
                 }
 
-                // Слайдердің енін есептеу және орнату
+                // ЖАҢА ФУНКЦИЯ: Контейнер биіктігін реттеу
+                function adjustContainerHeight() {
+                    let maxHeight = 0;
+                    
+                    if (allSlides.length === 0) return; // Слайдтар дайын болмаса, шығу
+
+                    // Көрінетін слайдтарды алу
+                    for (let i = 0; i < slidesPerView; i++) {
+                        const currentSlide = allSlides[currentIndex + i];
+                        if (currentSlide) {
+                            const card = currentSlide.querySelector('.slider-card');
+                            if (card && card.offsetHeight > maxHeight) {
+                                maxHeight = card.offsetHeight;
+                            }
+                        }
+                    }
+                    
+                    if (maxHeight > 0) {
+                        // 20px - .slider-item padding-і (top 10 + bottom 10)
+                        sliderContainer.style.height = (maxHeight + 20) + 'px'; 
+                    }
+                }
+
+                // Слайдерді қайта құру және орнату функциясы
                 function setupSlider() {
                     slidesPerView = getSlidesPerView();
-                    const slideWidth = 100 / slidesPerView;
                     
-                    slides.forEach(slide => {
-                        slide.style.flex = `0 0 ${slideWidth}%`;
-                    });
-                    
-                    // Жаңа слайдтарды клондау (шексіз айналдыру үшін)
-                    const slidesToClone = slides.slice(0, slidesPerView);
+                    // Тазалау: Тек түпнұсқа слайдтарды қалдыру
+                    wrapper.innerHTML = '';
+                    originalSlides.forEach(slide => wrapper.appendChild(slide));
+
+                    // Қажетті клонтарды соңына қосу (шексіз айналдыру үшін)
+                    const slidesToClone = originalSlides.slice(0, slidesPerView);
                     slidesToClone.forEach(slide => {
                         wrapper.appendChild(slide.cloneNode(true));
                     });
+
+                    // 'allSlides' тізімін жаңарту
+                    allSlides = Array.from(wrapper.children); // Мысалы, [1...8, 1c, 2c, 3c]
+
+                    // Барлық слайдтарға (түпнұсқа + клон) енін белгілеу
+                    allSlides.forEach(slide => {
+                        slide.style.flex = `0 0 ${100 / slidesPerView}%`;
+                    });
+
+                    // Бастапқы позицияны орнату
+                    currentIndex = 0;
+                    updateSliderPosition(false); // Анимациясыз
                 }
                 
+                // Слайд позициясын жаңарту функциясы
                 function updateSliderPosition(animate = true) {
-                    const slideWidth = slides[0].clientWidth;
+                    if (allSlides.length === 0) return; // allSlides дайын болмаса
+
+                    const slideWidth = allSlides[0].clientWidth;
                     const offset = -currentIndex * slideWidth;
                     
                     wrapper.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
                     wrapper.style.transform = `translateX(${offset}px)`;
+                    
+                    // Биіктікті әр жылжыған сайын реттеу
+                    requestAnimationFrame(adjustContainerHeight);
                 }
 
+                // "Келесі" батырмасы
                 nextBtn.addEventListener('click', () => {
                     currentIndex++;
                     updateSliderPosition();
                     
-                    // Шексіз айналдыру логикасы
-                    if (currentIndex === slides.length) {
+                    // Егер соңғы (клондалмаған) слайдқа жетсек
+                    if (currentIndex === originalSlides.length) {
                         setTimeout(() => {
-                            currentIndex = 0;
+                            currentIndex = 0; // Басына жылдам оралу
                             updateSliderPosition(false);
-                        }, 500); // Анимация уақытымен бірдей
+                        }, 500); // Анимация аяқталған соң
                     }
                 });
 
+                // "Алдыңғы" батырмасы
                 prevBtn.addEventListener('click', () => {
                     if (currentIndex === 0) {
-                        // Артқа, соңғы "шынайы" слайдқа жылдам өту
-                        currentIndex = slides.length;
+                        currentIndex = originalSlides.length; // Клондардың басына (соңына) жылдам өту
                         updateSliderPosition(false);
                     }
                     
-                    // Кішкене кідірістен кейін анимацияны іске қосу
+                    // setTimeout браузерге "секіруді" орындап, содан кейін ғана анимацияны бастауға мүмкіндік береді
                     setTimeout(() => {
-                        currentIndex--;
+                        currentIndex--; // Алдыңғы слайдқа (мысалы, 7-шіге) айналу
                         updateSliderPosition();
                     }, 10);
                 });
 
-                // Экран өлшемі өзгергенде слайдерді қайта реттеу
+                // Экран өлшемі өзгергенде
                 window.addEventListener('resize', () => {
-                    setupSlider();
-                    updateSliderPosition(false);
+                    setupSlider(); // Слайдерді қайта құру
                 });
 
                 // Бастапқы орнату
                 setupSlider();
-                updateSliderPosition(false);
+                
+                // Суреттердің жүктелуін күту (биіктікті дұрыс есептеу үшін)
+                window.addEventListener('load', adjustContainerHeight);
+                // Қосымша тексеріс (егер 'load' оқиғасы өтіп кетсе)
+                setTimeout(adjustContainerHeight, 200);
             }
 
             // Мобильді менюдегі сілтемені басқанда менюді жабу
